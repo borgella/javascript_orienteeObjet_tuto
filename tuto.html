@@ -164,7 +164,7 @@
         if(typeof callback === 'function')
           return callback(this.xPos,this.yPos);
         else
-          return new Error(' You should throw a function here, no joke');
+          return new Error({message:' You should throw a function here, no joke'});
       } 
 
       //Fonction qui prend comme paramétre deux variables plus une fonction callback,
@@ -430,7 +430,8 @@ var Truck = function(name){
 extend(Truck,Vehicule);
 
 Truck.prototype.drive = function(){
-  return Vehicule.prototype.drive.apply(this);
+  return "Personalisation of truck drive function + Vehicule.prototype.drive.apply(this) = super.drive() "
+        + Vehicule.prototype.drive.apply(this);
 }
 
 var truck = new Truck("Jeep");
@@ -587,7 +588,7 @@ class Hero2{
 
 }
 
-var borgel1 = new Hero2(null,"borgel");
+var borgel1 = new Hero2(null,"borgella");
 
 var faux1 = new Hero2(borgel1,"faux");
 
@@ -687,6 +688,7 @@ nextLine();
 document.write("the division's result is: "+result);
 
 nextLine();
+
  
 </script>
 
