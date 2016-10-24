@@ -1,16 +1,16 @@
 "use strict"
 
-//!-- PREMIÈRE facon de créer un object JavaScript -->
+//<!-- PREMIÈRE facon de créer un object JavaScript -->
 var costumer = {
 
     name: "Toto",	// just a value for the key name
 
     speak: function () {	// a function as value for the key speak
-        return "My name is " + this.name;
+        return "I speak french, english, spanish and creole ";
     },
 
     address: {		// an object as value for the key address		
-        street: "5574 Place Basile Patenaude",
+        street: "Place Basile Patenaude",
         city: "Montreal",
         state: "Quebec"
     },
@@ -30,9 +30,9 @@ array.push(elem2);
 
 array.forEach(function (obj) {
 
-    console.log("For Each fonction " + obj.getName + "\n");
-    console.log("For Each fonction " + obj.address.city + "\n");
-    console.log("For Each fonction " + obj.speak() + "\n");
+    console.log("Costumer's name is: " + obj.getName + "\n");
+    console.log("Costumer lives in the city of " + obj.address.city + "\n");
+    console.log("Costumer's language is: " + obj.speak() + "\n");
 
 });
 
@@ -43,18 +43,18 @@ console.log(costumer.name + "\n");
 console.log(costumer.speak() + " " + "and i live at " + costumer.address.street + "\n");
 nextLine();
 
-//!-- On ajoute une nouvelle propriété à l object  adresse durant l éxecution / add new property to costumer object at runtime -->
+//<!-- On ajoute une nouvelle propriété à l object  adresse durant l éxecution / add new property to costumer object at runtime -->
 costumer.address.country = " Canada";
-console.log(costumer.speak() + " " + "and i live at " + costumer.address.country + "\n");
+console.log(costumer.speak() + " " + "and lives at " + costumer.address.country + "\n");
 nextLine();
 
 //!-- var toto = new costumer() ne fonctionnera pas ce n est pas une fonction -->
 var toto = costumer;
 toto.name = 'Toto';
-consle.log(toto.speak() + " " + "and i live at " + costumer.address.country + "\n");
+console.log(toto.speak() + " " + "and lives at " + costumer.address.country + "\n");
 nextLine();
 
-//!-- All fields here is public any functions can modify them-->
+//<!-- Les variables de cet object sont publiques / All fields here are public any functions can modify them-->
 function Person(name, street) {
     this.name = name;
 
@@ -65,10 +65,10 @@ function Person(name, street) {
     };
 }
 
-var rondo = new Person("Rondo", "5574 Place Basile");
+var rondo = new Person("Rondo", "Place Basile Patenaude");
 console.log(rondo.speak() + "\n ");
 
-console.log("Rondo is type of Person ? " + (rondo instanceof Person) + "\n ");
+console.log("Rondo is type of Person return ? " + (rondo instanceof Person) + "\n ");
 nextLine();
 
 function changeName(person) {
@@ -80,7 +80,7 @@ changeName(rondo);
 console.log("Rondo name has been change to " + rondo.name + "\n ");
 nextLine();
 
-//!-- TROISIEME facon de créer un object JavaScript -->
+//!-- TROISIEME facon de créer un object JavaScript  et de rendre les variables privées -->
 //!-- With Private fields In JavaScript, all fields here is private because we declared them -->
 var Person1 = function (nom, street) {
     var name = nom;
@@ -90,11 +90,11 @@ var Person1 = function (nom, street) {
         return name;
     };
 }
-var person = new Person1("Borgella", "Place Basile");
+var person = new Person1("Maryline", "Place Basile Patenaude");
 
 console.log("Print the name of Person1 " + person.getName() + "\n ");
 nextLine();
-console.log("The name will be UNDEFINED because it is private: " + person.name + "\n ");
+console.log("The name will be UNDEFINED because it is private field: " + person.name + "\n ");
 nextLine();
 //##################################################################################################
 
@@ -158,7 +158,7 @@ function Point(posX, posY) {
         if (typeof callback === 'function')
             return callback(number1, number2);
         else
-            return { code: 1000, error: 'you should pass a function as value' };
+            return new Error({ code: 1000, error: 'you should pass a function as value' });
     }
 
 }
@@ -351,13 +351,6 @@ nextLine();
 
 //###################### FUNCTION QUI VA CREER L'HERITAGE ###############################
 
-function inherit(Child, Parent) {
-    var Temp = function () { };
-    Temp.prototype = Parent.prototype;
-    Child.prototype = new Temp();
-    Child.prototype.constructor = Child;
-}
-
 function extend(Child, Parent) {
     Child.prototype = new Parent();
     Child.prototype.constructor = Child;
@@ -414,7 +407,8 @@ var Truck = function (name) {
 extend(Truck, Vehicule);
 
 Truck.prototype.drive = function () {
-    return Vehicule.prototype.drive.apply(this);
+    return "Personalisation of truck drive function + Vehicule.prototype.drive.apply(this) = super.drive() "
+        + Vehicule.prototype.drive.apply(this);
 }
 
 var truck = new Truck("Jeep");
@@ -552,7 +546,7 @@ class Hero2 {
 
     constructor(hero) {
         if (hero === null) {
-            this.name = "Borgel";
+            this.name = "Borgella";
         }
         return hero;
     }
@@ -571,11 +565,11 @@ class Hero2 {
 
 }
 
-var borgel1 = new Hero2(null, "borgel");
+var borgella1 = new Hero2(null, "Borgella");
 
-var faux1 = new Hero2(borgel1, "faux");
+var faux1 = new Hero2(borgella1, "noName");
 
-console.log("Hero2's name " + borgel1.getName() + "\n ");
+console.log("Hero2's name " + borgella1.getName() + "\n ");
 
 console.log("Hero2's name " + faux1.getName() + "\n ");
 nextLine();
@@ -598,7 +592,8 @@ function Bow(weapon) {
     this.hasMagic = weapon.hasMagic || false;
 }
 
-function WeaponFactory() { };
+// will be serve as factory object
+function WeaponFactory() {};
 
 WeaponFactory.prototype.makeWeapon = function (weapon) {
 
@@ -621,7 +616,7 @@ WeaponFactory.prototype.makeWeapon = function (weapon) {
     } else {
         return false;
     }
-
+y
     return new weaponClass(weapon);
 }
 
