@@ -1,7 +1,7 @@
 # do not include node modules
 node_modules
 *.pages
-
+*.html
 .DS_Store
 .DS_STORE
 Dockerfile
