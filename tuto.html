@@ -693,12 +693,3 @@ nextLine();
 </body>
 
 </html>
-
-module.exports.theTruck = function (id, callback) {
-    User.findOne({ TruckId: id}, function (err, truck) {
-        if (err)
-            return callback(err, null);
-        else
-            return callback(null, truck);
-    });
-}
