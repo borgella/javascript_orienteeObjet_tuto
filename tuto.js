@@ -609,8 +609,6 @@ WeaponFactory.prototype.makeWeapon = function (weapon) {
     } else {
         return false;
     }
-
-    return null;
 }
 
 WeaponFactory.prototype.makeWeapon = function (weapon) {
