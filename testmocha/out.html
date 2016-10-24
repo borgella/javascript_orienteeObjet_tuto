@@ -1,0 +1,30 @@
+    <section class="suite">
+      <h1>sanitize</h1>
+      <dl>
+        <dt>description of what my function does</dt>
+        <dd><pre><code>var word = 'Hello World';
+expect(word).to.equal('Hello World');
+expect(word).to.not.equal('Hellooo.. Word');
+expect(word).to.be.a('string');
+expect(word).to.not.be.a('number');
+expect(word).to.contain('ll');</code></pre></dd>
+      </dl>
+    </section>
+    <section class="suite">
+      <h1>Sanitizing</h1>
+      <dl>
+        <dt>returns the lower case of a string</dt>
+        <dd><pre><code>var actual = sanitize.sanitize('HELLO WORLD');
+var expectResult = 'hello world';
+expect(actual).to.equal(expectResult);</code></pre></dd>
+      </dl>
+    </section>
+    <section class="suite">
+      <h1>Hyphen</h1>
+      <dl>
+        <dt>Suppress all - by space</dt>
+        <dd><pre><code>var actual = sanitize.sanitize('Hello-world');
+var expectResult = 'hello world';
+assert.strictEqual(actual,expectResult);</code></pre></dd>
+      </dl>
+    </section>

@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Object Oriented JavaScript</title>
+</head>
+<body >
+  <script type ="text/javascript">
+
+  function nextLine(){
+    document.write("<br/ >");
+  }
+  
+  //On crée un objet point
+  function Point(posX,posY){
+    this.xPos = posX;
+    this.yPos = posY;
+
+    // On va ajouter une function callback qui laissera à l'utilisateur le soin de définir 
+    // ses propres opérations sur les variables d'instances.
+    // Personnellement je considère une fonction callback comme une fonction abstraite dont l'implémentation dépendra du programmeur.
+    // Fonction qui prend comme parametre une seule et unique fonction callback 
+    this.calculate = function(callback){
+      if(typeof callback === 'function')
+        return callback(this.xPos,this.yPos);
+       else
+        return callback ({ errorId : 11000, error :'you should pass a function as value'});
+    }
+    
+   // Fonction qui prend comme paramétre deux variables plus une fonction callback, 
+   // la fonction qui jouera le role de callback doit etre une fonction qui prend    	
+   // aussi deux paramètres. A l'appel de la fonction operation les parametre number1,number2 sont obligatoires.
+    this.operation = function(number1,number2,callback){
+      if(typeof number1=== 'number' && typeof number2 === 'number' && typeof callback === 'function')
+          return callback(number1,number2);
+      else
+        return 'error';
+    }
+  
+  }
+
+  // we're adding a function to the Point object that will use the calculate callback function
+  // Ajout d'une fonction dynamique multiply a l objet point 
+  Point.prototype.multiply = function(pointX,pointY){
+    return pointX * pointY;
+  } 
+
+  Point.prototype.substract = function(pointx,pointY){
+    return pointx - pointY ;
+  }
+
+  var testPoint = new Point(8.3, 5.5);
+
+   // THE ASYNCRHONIMOUS PART OF THE POINT CLASS
+   // UTILISATION DES FONCTIONS ASYNCHROME
+  document.write("Using the callback function of point with an UNDEFINE function: " + testPoint.calculate(function(pointX,pointY){
+      return pointX + pointY ;
+  }));
+  nextLine();
+
+  var multiply = function(param1,param2){
+    return param1 * param2;
+  }
+  
+  document.write("Using the calculate callback function with a DEFINE function: "+ testPoint.calculate(multiply));
+  nextLine();
+
+  document.write("Using the calculate callback function with a dynamic function: " + testPoint.calculate(testPoint.multiply))
+  nextLine();
+  
+  document.write("Using the operation callback function with an UNDEFINE function: " + testPoint.operation(12,45,function(param1,param2){
+      return (param1 / param2) * 50;
+  }));
+  nextLine();
+
+  document.write("Throw an error if you don't pass all the parameters require for the operation function: " + testPoint.operation(testPoint.substract));
+  nextLine();
+
+ //##########################################################################
+ </script>
+</body>
+</html>
+
