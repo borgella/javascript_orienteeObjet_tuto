@@ -575,7 +575,6 @@ console.log("Hero2's name " + faux1.getName() + "\n ");
 nextLine();
 nextLine();
 //############ Factory Pattern #########################
-
 //Factory 1
 
 function Sword(weapon) {
