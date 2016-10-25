@@ -2,6 +2,7 @@ var chai = require('chai');
 var expect = require('chai').expect;
 var assert = require('chai').assert;
 var index = require('../index');
+var tuto = require('../tuto');
 
 describe('sanitize',function() {
     it('description of what my function does',function(){

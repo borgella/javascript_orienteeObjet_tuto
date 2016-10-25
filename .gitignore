@@ -2,6 +2,9 @@
 node_modules
 *.pages
 *.html
+tuto.html
+async.html
+out.html
 
 .DS_Store
 .DS_STORE
