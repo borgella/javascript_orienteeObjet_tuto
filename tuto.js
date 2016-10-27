@@ -54,6 +54,8 @@ toto.name = 'Toto';
 console.log(toto.speak() + " " + "and lives at " + costumer.address.country + "\n");
 nextLine();
 
+module.exports = costumer;
+
 //<!-- Les variables de cet object sont publiques / All fields here are public any functions can modify them-->
 function Person(name, street) {
     this.name = name;
@@ -96,6 +98,9 @@ console.log("Print the name of Person1 " + person.getName() + "\n ");
 nextLine();
 console.log("The name will be UNDEFINED because it is private field: " + person.name + "\n ");
 nextLine();
+
+module.exports = Person;
+
 //##################################################################################################
 
 function Coordinates(latitude, longitude) {
@@ -133,6 +138,8 @@ testCoords.setLatitude = 4334213.87;
 testCoords.setLongitude = 400342.56;
 console.log("The latitude of this shit after setter is: " + testCoords.getLatitude + " and the longitude of this shit also is: " + testCoords.getLongitude + "\n ");
 nextLine();
+
+module.exports = Coordinates;
 //##########################################################################
 
 
@@ -238,6 +245,8 @@ console.log("Activate the error for the calculate callback operation  " + testPo
 nextLine();
 nextLine();
 
+
+module.exports = Point;
 //##########################################################################
 
 //##### UPTODATE WAY,TROISIEME FACON DE DEFINIR DES GETTERS ET SETTERS EN JAVASCRIPT#######
@@ -268,6 +277,8 @@ console.log("The radius of the circle: " + testCircle.getRadius + "\n ");
 testCircle.setRadius = 3.14;
 console.log("The radius of the circle after setter call with TEST_RADIUS: " + testCircle.getRadius2() + "\n ");
 nextLine();
+
+module.exports = Circle;
 //###################### HERITAGE EN JAVASCRIPT###############################
 
 function Animal(name) {
@@ -326,6 +337,9 @@ Wolf.prototype.getSound = function () {
 console.log(wolf.getSound(wolf) + "\n ");
 nextLine();
 
+module.exports = Animal;
+module.exports = Canine;
+module.exports = Wolf;
 //############ Juste hériter le prototype d'un objet########
 
 function Rodent() {
@@ -472,6 +486,8 @@ console.log("SETTER OF THE POINT2 CLASS EMAC6 WAY: " + point.getPosX() + "\n ");
 nextLine();
 nextLine();
 
+module.exports = Point2;
+//##############################################
 
 class Birds {
     constructor(name) {
@@ -512,6 +528,9 @@ var pigeon = new Pigeon("tweet", "red");
 console.log("Pigeon name: " + pigeon.toString() + "\n ");
 nextLine();
 nextLine();
+
+module.exports = Birds;
+module.exports = Pigeon;
 //############ LES PATRON COMMANDES #########################
 
 //############  SINGLETON Pattern #########################
